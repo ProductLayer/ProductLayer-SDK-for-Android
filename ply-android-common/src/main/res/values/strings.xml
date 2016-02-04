@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2015, ProductLayer GmbH All rights reserved.
+  ~
+  ~ Redistribution and use in source and binary forms, with or without
+  ~ modification, are permitted provided that the following conditions are met:
+  ~
+  ~ - Redistributions of source code must retain the above copyright notice, this
+  ~   list of conditions and the following disclaimer.
+  ~
+  ~ - Redistributions in binary form must reproduce the above copyright notice,
+  ~   this list of conditions and the following disclaimer in the documentation
+  ~   and/or other materials provided with the distribution.
+  ~
+  ~ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  ~ AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  ~ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+  ~ DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+  ~ FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+  ~ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+  ~ SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+  ~ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+  ~ OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  ~ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  -->
+
+<resources>
+
+    <string name="action_photo">Photo</string>
+    <string name="action_post">Post</string>
+    <string name="action_save">Save</string>
+    <string name="pick_from_gallery">Pick from gallery</string>
+
+    <string name="product_image">Product Image</string>
+    <string name="user_image">Avatar</string>
+    <string name="like_image">Like</string>
+    <string name="dislike_image">Dislike</string>
+    <string name="write_opinion_image">Write opinion</string>
+    <string name="show_fullscreen">Show fullscreen</string>
+
+    <string name="sign_in_header">Sign in</string>
+    <string name="sign_in_existing_user_header">Enter account credentials</string>
+    <string name="sign_up_header">Sign up new account</string>
+    <string name="login_existing_user_button">Log in with prod.ly user</string>
+    <string name="sign_up_button">Sign Up</string>
+    <string name="email_address_hint">Email address</string>
+    <string name="user_name_hint">User name</string>
+    <string name="password_hint">Password</string>
+    <string name="sign_in_button">Sign in</string>
+    <string name="cancel_button">Cancel</string>
+
+    <string name="personal">Personal</string>
+    <string name="first_name_hint">First name</string>
+    <string name="last_name_hint">Last name</string>
+    <string name="gender">Gender</string>
+    <string name="female">female</string>
+    <string name="male">male</string>
+    <string name="account">Account</string>
+    <string name="change_password_link">Password</string>
+    <string name="change_password_header">Change password</string>
+    <string name="current_password_hint">Current password</string>
+    <string name="new_password_hint">New password</string>
+    <string name="confirm_new_password_hint">Confirm new password</string>
+    <string name="current_password_empty">Please enter your current password!</string>
+    <string name="new_password_empty">Please enter a new password!</string>
+    <string name="new_password_mismatch">Please make sure the same password is entered twice!</string>
+    <string name="change_password_button">Change</string>
+    <string name="password_change_succeeded">Password successfully changed!</string>
+    <string name="password_change_failed">Sorry, you have entered an incorrect password!</string>
+    <string name="notification">Notification</string>
+    <string name="push_notification">Push</string>
+    <string name="push_notification_updated">Push notification setting updated!</string>
+    <string name="email_notification">Email</string>
+    <string name="email_notification_updated">Email notification setting updated!</string>
+    <string name="newsletter">Newsletter</string>
+    <string name="newsletter_updated">Newsletter setting updated!</string>
+    <string name="social">Social</string>
+    <string name="profile_edited">Your settings have been updated.</string>
+    <string name="avatar_updated">Your avatar has been updated.</string>
+    <string name="facebook" translatable="false">Facebook</string>
+    <string name="twitter" translatable="false">Twitter</string>
+    <string name="facebook_connect_succeeded">Facebook successfully connected!</string>
+    <string name="facebook_connect_failed">Sorry, an error occurred connecting Facebook.</string>
+    <string name="facebook_disconnect_succeeded">Facebook successfully disconnected!</string>
+    <string name="facebook_disconnect_failed">Sorry, an error occurred disconnecting Facebook.</string>
+    <string name="twitter_connect_succeeded">Twitter successfully connected!</string>
+    <string name="twitter_connect_failed">Sorry, an error occurred connecting Twitter.</string>
+    <string name="twitter_disconnect_succeeded">Twitter successfully disconnected!</string>
+    <string name="twitter_disconnect_failed">Sorry, an error occurred disconnecting Twitter.</string>
+    <string name="sharing_post_on_facebook">Your post will be shared on Facebook.</string>
+    <string name="not_sharing_post_on_facebook">Your post will not be shared on Facebook.</string>
+    <string name="sharing_post_on_twitter">Your post will be tweeted.</string>
+    <string name="not_sharing_post_on_twitter">Your post will not be tweeted.</string>
+
+    <string name="product_timeline">Timeline</string>
+    <string name="product_details">Details</string>
+
+    <string name="profile_timeline">Timeline</string>
+    <string name="profile_following">Friends</string>
+    <string name="profile_followed_by">Followers</string>
+
+    <string name="follow_button">Follow</string>
+    <string name="unfollow_button">Unfollow</string>
+
+    <string name="sec_abbr">sec</string>
+    <string name="min_abbr">min</string>
+    <string name="hour_abbr">hour</string>
+    <string name="day_abbr">day</string>
+    <string name="year_abbr">year</string>
+    <string name="sec_pl_abbr">secs</string>
+    <string name="min_pl_abbr">mins</string>
+    <string name="hour_pl_abbr">hours</string>
+    <string name="day_pl_abbr">days</string>
+    <string name="year_pl_abbr">years</string>
+    <string name="ago_suffix">ago</string>
+    <string name="ago_prefix"/>
+
+    <string name="percentage_progress_to_next_level">progress</string>
+
+    <string name="connection_failed_internet">Connection failed - please make sure you are connected to the internet.</string>
+
+    <string name="not_a_globally_valid_barcode">Sorry, this is not a globally valid bar code.</string>
+
+    <string name="no_camera_found">Sorry, this feature requires a camera.</string>
+
+    <string name="error_post_empty">Please leave some text!</string>
+
+    <string name="take_photo_button">Take photo</string>
+
+    <string name="dialog_title_add_photo">Add photo of new product?</string>
+    <string name="congratulations_new_product">Congratulations, you have scanned a product that is still unknown to us. Help make this product found and earn points and achievements!</string>
+    <string name="new_product">New Product</string>
+    <string name="image_uploaded">Thank you for providing an image!</string>
+    <string name="image_uploaded_more_info">Thank you for providing an image! Please let us know more about the product.</string>
+    <string name="product_saved">The product has been saved. Thank you for your input!</string>
+    <string name="product_edited">The product has been edited. Thank you for your input!</string>
+
+    <string name="product_name_hint">Product Name</string>
+    <string name="product_name_error">Please enter the product name</string>
+    <string name="brand_hint">Brand</string>
+    <string name="brand_owner_hint">Brand Owner</string>
+    <string name="category_hint">Category</string>
+
+    <string name="category_selection">Please select a category</string>
+    <string name="select_category_button">Select category</string>
+    <string name="indicator_more">Expand</string>
+    <string name="indicator_less">Collapse</string>
+
+    <string name="category">Category</string>
+    <string name="brand">Brand</string>
+    <string name="brand_owner">Brand Owner</string>
+    <string name="short_description">Short Description</string>
+    <string name="long_description">Long Description</string>
+    <string name="homepage">Homepage</string>
+
+    <string name="opinion_text_hint">Share your opinion</string>
+    <string name="opinion_posted">Thank you for sharing!</string>
+
+    <string name="search_results_for_name">Results for %1$s</string>
+
+    <string name="FRIENDS_ONLY">Only show friends</string>
+    <string name="INCLUDE_IMAGES">Also show new images</string>
+
+    <string name="provider_key_facebook" translatable="false">facebook</string>
+    <string name="provider_key_twitter" translatable="false">twitter</string>
+
+</resources>

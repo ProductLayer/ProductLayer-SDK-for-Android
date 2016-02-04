@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2015, ProductLayer GmbH All rights reserved.
+  ~
+  ~ Redistribution and use in source and binary forms, with or without
+  ~ modification, are permitted provided that the following conditions are met:
+  ~
+  ~ - Redistributions of source code must retain the above copyright notice, this
+  ~   list of conditions and the following disclaimer.
+  ~
+  ~ - Redistributions in binary form must reproduce the above copyright notice,
+  ~   this list of conditions and the following disclaimer in the documentation
+  ~   and/or other materials provided with the distribution.
+  ~
+  ~ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  ~ AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  ~ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+  ~ DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+  ~ FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+  ~ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+  ~ SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+  ~ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+  ~ OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  ~ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/user_image"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:contentDescription="@string/user_image"/>
+
+    <View
+        android:id="@+id/avatar_scrim"
+        android:layout_width="88dp"
+        android:layout_height="88dp"
+        android:layout_alignBottom="@id/user_image"
+        android:layout_alignLeft="@id/user_image"
+        android:layout_marginBottom="4dp"
+        android:layout_marginLeft="4dp"
+        android:background="@drawable/scrim_dark_bottom_round"
+        android:visibility="gone"/>
+
+    <ImageView
+        android:id="@+id/take_photo_image"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_alignBottom="@id/user_image"
+        android:layout_alignLeft="@id/user_image"
+        android:layout_marginBottom="4dp"
+        android:layout_marginLeft="39dp"
+        android:contentDescription="@string/take_photo_button"
+        android:src="@drawable/ic_camera_alt_white_36dp"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/level_text"
+        style="?attr/textAppearanceLevelOverlay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/user_image"
+        android:layout_alignRight="@id/user_image"
+        android:layout_marginBottom="2dp"
+        android:layout_marginRight="8dp"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:id="@+id/user_name"
+        style="?attr/textAppearanceDisplay1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/user_image"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_toRightOf="@id/user_image"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:shadowColor="@color/black"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="10"
+        android:textColor="@color/white"/>
+
+    <com.productlayer.android.common.view.FollowView
+        android:id="@+id/follow_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/user_image"
+        android:layout_marginLeft="16dp"
+        android:layout_toRightOf="@id/user_image"/>
+
+</RelativeLayout>

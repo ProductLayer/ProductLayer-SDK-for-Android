@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2015, ProductLayer GmbH All rights reserved.
+  ~
+  ~ Redistribution and use in source and binary forms, with or without
+  ~ modification, are permitted provided that the following conditions are met:
+  ~
+  ~ - Redistributions of source code must retain the above copyright notice, this
+  ~   list of conditions and the following disclaimer.
+  ~
+  ~ - Redistributions in binary form must reproduce the above copyright notice,
+  ~   this list of conditions and the following disclaimer in the documentation
+  ~   and/or other materials provided with the distribution.
+  ~
+  ~ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  ~ AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  ~ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+  ~ DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+  ~ FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+  ~ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+  ~ SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+  ~ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+  ~ OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  ~ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  -->
+
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+       xmlns:tools="http://schemas.android.com/tools"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/friends_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/like_friends_text"
+            style="?attr/textAppearanceLikesOverlay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
+            android:textColor="@color/white"/>
+
+        <TextView
+            android:id="@+id/dislike_friends_text"
+            style="?attr/textAppearanceDislikesOverlay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
+            android:textColor="@color/white"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/like_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/friends_container"
+        android:paddingBottom="2dp"
+        android:paddingLeft="4dp"
+        android:paddingTop="2dp"
+        tools:ignore="RtlSymmetry">
+
+        <ImageView
+            android:id="@+id/like_image"
+            android:layout_width="@dimen/feed_interaction_icon"
+            android:layout_height="@dimen/feed_interaction_icon"
+            android:alpha="0.9"
+            android:contentDescription="@string/like_image"
+            android:src="@drawable/ic_mood_white_36dp"/>
+
+        <TextView
+            android:id="@+id/like_amount_text"
+            style="?attr/textAppearanceSubhead"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="3dp"
+            android:layout_toRightOf="@id/like_image"
+            android:alpha="0.9"
+            android:text="0"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/dislike_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/friends_container"
+        android:layout_marginLeft="12dp"
+        android:layout_toRightOf="@id/like_container"
+        android:paddingBottom="2dp"
+        android:paddingRight="12dp"
+        android:paddingTop="2dp"
+        tools:ignore="RtlSymmetry">
+
+        <ImageView
+            android:id="@+id/dislike_image"
+            android:layout_width="@dimen/feed_interaction_icon"
+            android:layout_height="@dimen/feed_interaction_icon"
+            android:alpha="0.9"
+            android:contentDescription="@string/dislike_image"
+            android:src="@drawable/ic_mood_bad_white_36dp"/>
+
+        <TextView
+            android:id="@+id/dislike_amount_text"
+            style="?attr/textAppearanceSubhead"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="3dp"
+            android:layout_toRightOf="@id/dislike_image"
+            android:alpha="0.9"
+            android:text="0"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText"/>
+
+    </RelativeLayout>
+
+</merge>
