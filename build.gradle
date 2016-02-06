@@ -48,6 +48,5 @@ allprojects {
     repositories {
         mavenLocal()
         jcenter()
-        maven { url 'https://maven.fabric.io/public' }
     }
 }
