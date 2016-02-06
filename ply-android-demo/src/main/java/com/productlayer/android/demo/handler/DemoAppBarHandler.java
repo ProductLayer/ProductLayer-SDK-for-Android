@@ -1,6 +1,5 @@
-include ':ply-android-demo'
 /*
- * Copyright (c) 2015, ProductLayer GmbH All rights reserved.
+ * Copyright (c) 2016, ProductLayer GmbH All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -24,4 +23,59 @@ include ':ply-android-demo'
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-include 'ply-android-sdk', 'ply-android-common'
+package com.productlayer.android.demo.handler;
+
+import android.view.View;
+
+import com.productlayer.android.common.handler.AppBarHandler;
+
+/**
+ * Dummy app bar handler.
+ */
+public class DemoAppBarHandler implements AppBarHandler {
+    @Override
+    public void setTimelineAppBar(View view) {
+    }
+
+    @Override
+    public void setProductAppBar(View view, String title, View customView, int addCollapsedHeight, int
+            expandedHeight, View backdrop) {
+    }
+
+    @Override
+    public void setEditProductAppBar(View view, String title) {
+    }
+
+    @Override
+    public void setProfileAppBar(View view, String title, View customView, int addCollapsedHeight, int
+            expandedHeight, View backdrop) {
+    }
+
+    @Override
+    public void setProfileEditAppBar(View view, String title) {
+    }
+
+    @Override
+    public void setOpinionAppBar(View view, String title) {
+    }
+
+    @Override
+    public boolean hasTranslucentStatusBar() {
+        return false;
+    }
+
+    @Override
+    public int getCurrentCollapsedToolbarHeight() {
+        return 0;
+    }
+
+    @Override
+    public int getCurrentExpandedToolbarHeight() {
+        return 0;
+    }
+
+    @Override
+    public int getCurrentContentPadding() {
+        return 0;
+    }
+}
