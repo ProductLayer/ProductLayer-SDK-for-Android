@@ -40,7 +40,7 @@ PLYAndroid client = new PLYAndroid(config);
 
 #### Make an API call
 ```java
-ProductService.searchProductsByBrand(this, "Apple", null, null,
+ProductService.searchProductsByBrand(client, "Apple", null, null,
     new PLYCompletion<Product[]>() {
         @Override
         public void onSuccess(Product[] result) {
