@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2015, ProductLayer GmbH All rights reserved.
+  ~
+  ~ Redistribution and use in source and binary forms, with or without
+  ~ modification, are permitted provided that the following conditions are met:
+  ~
+  ~ - Redistributions of source code must retain the above copyright notice, this
+  ~   list of conditions and the following disclaimer.
+  ~
+  ~ - Redistributions in binary form must reproduce the above copyright notice,
+  ~   this list of conditions and the following disclaimer in the documentation
+  ~   and/or other materials provided with the distribution.
+  ~
+  ~ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  ~ AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  ~ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+  ~ DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+  ~ FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+  ~ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+  ~ SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+  ~ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+  ~ OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  ~ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  -->
+
+<resources>
+
+    <attr name="cardBackground" format="color"/>
+    <attr name="friendBackground" format="color"/>
+
+    <attr name="textColorAccent" format="color"/>
+    <attr name="textColorOnAccentBg" format="color"/>
+
+    <attr name="imagePlaceholder" format="color"/>
+
+    <attr name="textAppearanceCaption" format="reference"/>
+    <attr name="textAppearanceBody1" format="reference"/>
+    <attr name="textAppearanceBody2" format="reference"/>
+    <attr name="textAppearanceSubhead" format="reference"/>
+    <attr name="textAppearanceTitle" format="reference"/>
+    <attr name="textAppearanceHeadline" format="reference"/>
+    <attr name="textAppearanceDisplay1" format="reference"/>
+    <attr name="textAppearanceDisplay2" format="reference"/>
+    <attr name="textAppearanceDisplay3" format="reference"/>
+    <attr name="textAppearanceDisplay4" format="reference"/>
+    <attr name="textAppearanceLevelOverlay" format="reference"/>
+    <attr name="textAppearanceLikesOverlay" format="reference"/>
+    <attr name="textAppearanceDislikesOverlay" format="reference"/>
+
+    <attr name="buttonStyleHighlighted" format="reference"/>
+    <attr name="borderlessButtonStyleHighlighted" format="reference"/>
+
+    <attr name="dialogHeader" format="reference"/>
+    <attr name="dialogBody" format="reference"/>
+    <attr name="dialogBodyWide" format="reference"/>
+
+    <attr name="speechBubbleShape" format="reference"/>
+    <attr name="speechBubbleBackground" format="reference"/>
+
+    <declare-styleable name="CurrentUser">
+
+        <attr name="showFullName" format="boolean"/>
+        <attr name="avatarSize" format="dimension"/>
+        <attr name="userImageUrl" format="string"/>
+        <attr name="userFullName" format="string"/>
+        <attr name="userName" format="string"/>
+        <attr name="userPoints" format="integer"/>
+
+    </declare-styleable>
+
+    <declare-styleable name="LikeView">
+
+        <attr name="likeType" format="enum">
+            <enum name="product" value="0"/>
+            <enum name="opine" value="1"/>
+            <enum name="image" value="2"/>
+        </attr>
+        <attr name="objectId" format="string"/>
+        <attr name="iconSize" format="enum">
+            <enum name="normal" value="0"/>
+            <enum name="mini" value="1"/>
+        </attr>
+        <attr name="iconColor" format="color"/>
+        <attr name="iconColorActive" format="color"/>
+
+    </declare-styleable>
+
+</resources>

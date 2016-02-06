@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2015, ProductLayer GmbH All rights reserved.
+  ~
+  ~ Redistribution and use in source and binary forms, with or without
+  ~ modification, are permitted provided that the following conditions are met:
+  ~
+  ~ - Redistributions of source code must retain the above copyright notice, this
+  ~   list of conditions and the following disclaimer.
+  ~
+  ~ - Redistributions in binary form must reproduce the above copyright notice,
+  ~   this list of conditions and the following disclaimer in the documentation
+  ~   and/or other materials provided with the distribution.
+  ~
+  ~ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  ~ AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  ~ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+  ~ DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+  ~ FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+  ~ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+  ~ SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+  ~ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+  ~ OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  ~ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  -->
+
+<resources>
+    <string name="action_photo">Foto</string>
+    <string name="action_post">Senden</string>
+    <string name="action_save">Speichern</string>
+    <string name="product_name_error">Bitte den Produktnamen eingeben</string>
+    <string name="brand_hint">Marke</string>
+    <string name="brand_owner_hint">Hersteller</string>
+    <string name="cancel_button">Abbrechen</string>
+    <string name="category_hint">Kategorie</string>
+    <string name="category_selection">Bitte eine Kategorie wählen</string>
+    <string name="congratulations_new_product">Herzlichen Glückwunsch - du hast ein Produkt gescannt, das wir noch nicht kennen. Bitte trag dazu bei, dass es gefunden werden kann und sichere dir Erfolge und Punkte!</string>
+    <string name="new_product">Neues Produkt</string>
+    <string name="connection_failed_internet">Die Verbindung ist fehlgeschlagen - besteht eine Internetverbindung?</string>
+    <string name="dialog_title_add_photo">Dem Produkt ein Bild hinzufügen?</string>
+    <string name="image_uploaded">Danke, dass du ein Foto gemacht hast!</string>
+    <string name="indicator_less">Zusammenklappen</string>
+    <string name="indicator_more">Ausklappen</string>
+    <string name="not_a_globally_valid_barcode">Leider ist das kein global gültiger Barcode.</string>
+    <string name="password_hint">Passwort</string>
+    <string name="product_image">Produktbild</string>
+    <string name="show_fullscreen">Im Vollbildmodus anzeigen</string>
+    <string name="product_name_hint">Produktname</string>
+    <string name="product_saved">Das Produkt wurde gespeichert. Danke für\'s Eintragen!</string>
+    <string name="select_category_button">Kategorie wählen</string>
+    <string name="sign_in_button">Login</string>
+    <string name="sign_in_header">Anmelden</string>
+    <string name="sign_in_existing_user_header">Accountdaten</string>
+    <string name="sign_up_header">Neuen User anlegen</string>
+    <string name="login_existing_user_button">Einloggen mit prod.ly User</string>
+    <string name="sign_up_button">Neuer prod.ly User</string>
+    <string name="email_address_hint">E-Mail Adresse</string>
+    <string name="take_photo_button">Foto machen</string>
+    <string name="user_image">Avatar</string>
+    <string name="user_name_hint">Username</string>
+    <string name="image_uploaded_more_info">Danke, dass du ein Foto gemacht hast! Bitte lass uns mehr über das Produkt wissen.</string>
+    <string name="product_edited">Das Produkt wurde aktualisiert. Danke für deinen Beitrag!</string>
+    <string name="no_camera_found">Leider benötigt dieses Feature eine Kamera.</string>
+    <string name="error_post_empty">Bitte schreibe ein wenig!</string>
+    <string name="category">Kategorie</string>
+    <string name="brand">Marke</string>
+    <string name="brand_owner">Hersteller</string>
+    <string name="homepage">Homepage</string>
+    <string name="long_description">Beschreibung</string>
+    <string name="short_description">Kurzbeschreibung</string>
+    <string name="product_details">Details</string>
+    <string name="product_timeline">Timeline</string>
+    <string name="profile_timeline">Timeline</string>
+    <string name="profile_following">Freunde</string>
+    <string name="profile_followed_by">Follower</string>
+    <string name="follow_button">Folge</string>
+    <string name="unfollow_button">Höre auf zu folgen</string>
+    <string name="opinion_text_hint">Teile deine Meinung</string>
+    <string name="opinion_posted">Danke für deinen Kommentar!</string>
+    <string name="like_image">Mag ich</string>
+    <string name="dislike_image">Mag ich nicht</string>
+    <string name="write_opinion_image">Schreibe Meinung</string>
+    <string name="percentage_progress_to_next_level">Fortschritt</string>
+    <string name="ago_prefix">vor</string>
+    <string name="ago_suffix"/>
+    <string name="day_abbr">Tag</string>
+    <string name="hour_abbr">Stunde</string>
+    <string name="min_abbr">Min</string>
+    <string name="sec_abbr">Sek</string>
+    <string name="year_abbr">Jahr</string>
+    <string name="day_pl_abbr">Tagen</string>
+    <string name="hour_pl_abbr">Stunden</string>
+    <string name="min_pl_abbr">Min</string>
+    <string name="sec_pl_abbr">Sek</string>
+    <string name="year_pl_abbr">Jahren</string>
+    <string name="gender">Geschlecht</string>
+    <string name="female">weiblich</string>
+    <string name="male">männlich</string>
+    <string name="account">Konto</string>
+    <string name="change_password_link">Passwort</string>
+    <string name="first_name_hint">Vorname</string>
+    <string name="last_name_hint">Nachname</string>
+    <string name="notification">Benachrichtigung</string>
+    <string name="personal">Persönliches</string>
+    <string name="social">Sozial</string>
+    <string name="profile_edited">Deine Einstellungen wurden aktualisiert.</string>
+    <string name="avatar_updated">Dein Profilbild wurde aktualisiert.</string>
+    <string name="pick_from_gallery">Aus der Galerie wählen</string>
+    <string name="change_password_button">Ändern</string>
+    <string name="change_password_header">Passwort ändern</string>
+    <string name="confirm_new_password_hint">Neues Passwort bestätigen</string>
+    <string name="current_password_empty">Bitte gib dein jetziges Passwort ein!</string>
+    <string name="current_password_hint">Jetziges Passwort</string>
+    <string name="new_password_empty">Bitte gib ein neues Passwort ein!</string>
+    <string name="new_password_hint">Neues Passwort</string>
+    <string name="new_password_mismatch">Bitte gib dasselbe Passwort zweimal ein!</string>
+    <string name="password_change_failed">Dein Passwort konnte leider nicht geändert werden - hast du dein jetziges Passwort korrekt eingegeben?</string>
+    <string name="password_change_succeeded">Dein Passwort wurde geändert!</string>
+    <string name="email_notification">E-Mail</string>
+    <string name="email_notification_updated">E-Mail Benachrichtigungsoption aktualisiert!</string>
+    <string name="newsletter">Newsletter</string>
+    <string name="newsletter_updated">Newsletteroption aktualisiert!</string>
+    <string name="push_notification">Push</string>
+    <string name="push_notification_updated">Push Benachrichtigungsoption aktualisiert!</string>
+    <string name="facebook_connect_succeeded">Facebook-Verbindung hergestellt!</string>
+    <string name="facebook_connect_failed">Beim Herstellen der Facebook-Verbindung ist ein Fehler aufgetreten.</string>
+    <string name="facebook_disconnect_succeeded">Facebook-Verbindung getrennt!</string>
+    <string name="facebook_disconnect_failed">Beim Trennen der Facebook-Verbindung ist ein Fehler aufgetreten.</string>
+    <string name="twitter_connect_succeeded">Twitter-Verbindung hergestellt!</string>
+    <string name="twitter_connect_failed">Beim Herstellen der Twitter-Verbindung ist ein Fehler aufgetreten.</string>
+    <string name="twitter_disconnect_succeeded">Twitter-Verbindung getrennt!</string>
+    <string name="twitter_disconnect_failed">Beim Trennen der Twitter-Verbindung ist ein Fehler aufgetreten.</string>
+    <string name="sharing_post_on_facebook">Dein Beitrag wird auf Facebook geteilt.</string>
+    <string name="not_sharing_post_on_facebook">Dein Beitrag wird nicht auf Facebook geteilt.</string>
+    <string name="sharing_post_on_twitter">Dein Beitrag wird auf Twitter geteilt.</string>
+    <string name="not_sharing_post_on_twitter">Dein Beitrag wird nicht auf Twitter geteilt.</string>
+    <string name="search_results_for_name">Ergebnisse für %1$s</string>
+    <string name="FRIENDS_ONLY">Zeige nur Freunde</string>
+    <string name="INCLUDE_IMAGES">Zeige auch neue Fotos</string>
+</resources>

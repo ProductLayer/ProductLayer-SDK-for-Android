@@ -1,0 +1,135 @@
+/*
+ * Copyright (c) 2015, ProductLayer GmbH All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ *
+ * - Redistributions of source code must retain the above copyright notice, this
+ *   list of conditions and the following disclaimer.
+ *
+ * - Redistributions in binary form must reproduce the above copyright notice,
+ *   this list of conditions and the following disclaimer in the documentation
+ *   and/or other materials provided with the distribution.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+ * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+ * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+ * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+ * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
+apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'
+
+group = project.GROUP
+version = project.VERSION_NAME
+
+android {
+    compileSdkVersion Integer.parseInt(project.ANDROID_COMPILE_SDK_VERSION)
+    buildToolsVersion project.ANDROID_BUILD_TOOLS_VERSION
+
+    defaultConfig {
+        minSdkVersion Integer.parseInt(project.ANDROID_BUILD_MIN_SDK_VERSION)
+        renderscriptTargetApi Integer.parseInt(project.ANDROID_BUILD_TARGET_SDK_VERSION)
+        renderscriptSupportModeEnabled true
+    }
+
+    buildTypes {
+        release {
+            consumerProguardFiles 'proguard-rules.pro'
+        }
+    }
+
+    packagingOptions {
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/notice.txt'
+        exclude '.readme'
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+}
+
+apply from: '../srcDoc.gradle'
+artifacts {
+    archives generateJavadocsJar
+    archives generateSourcesJar
+}
+
+install {
+    repositories.mavenInstaller {
+        pom {
+            project {
+                packaging 'aar'
+                name 'ProductLayer SDK for Android - Common Components'
+                description 'Common Components for building apps with the ProductLayer SDK for Android'
+                url project.SITE_URL
+                licenses {
+                    license {
+                        name project.LICENSE_NAME
+                        url project.LICENSE_URL
+                    }
+                }
+                organization {
+                    name project.ORGANIZATION_NAME
+                    url project.ORGANIZATION_URL
+                }
+                developers {
+                    developer {
+                        id project.DEVELOPER_ID
+                        name project.DEVELOPER_NAME
+                        email project.DEVELOPER_EMAIL
+                    }
+                }
+                issueManagement {
+                    system project.ISSUES_SYSTEM
+                    url project.ISSUES_URL
+                }
+                scm {
+                    connection project.SCM_CONNECTION
+                    developerConnection project.SCM_CONNECTION
+                    url project.SCM_URL
+                }
+            }
+        }
+    }
+}
+
+bintray {
+    Properties properties = new Properties()
+    properties.load(project.rootProject.file('local.properties').newDataInputStream())
+    user = properties.getProperty('bintray.user')
+    key = properties.getProperty('bintray.apikey')
+    pkg {
+        repo = 'maven'
+        name = 'ply-android-common'
+    }
+    configurations = ['archives']
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile(new File('ply-android-sdk').exists() ? project(':ply-android-sdk') : 'com' +
+            '.productlayer:ply-android-sdk:' + project.VERSION_NAME)
+    compile 'com.android.support:appcompat-v7:23.1.1'
+    compile 'com.android.support:cardview-v7:23.1.1'
+    compile 'com.android.support:recyclerview-v7:23.1.1'
+    compile 'com.android.support:design:23.1.1'
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.squareup.okhttp:okhttp:2.5.0'
+    compile 'com.squareup.okio:okio:1.6.0'
+    compile 'com.jakewharton:disklrucache:2.0.2'
+    compile 'me.dm7.barcodescanner:zxing:1.8.3'
+    compile 'com.joooonho:selectableroundedimageview:1.0.1'
+    compile 'com.commit451:PhotoView:1.2.4'
+}

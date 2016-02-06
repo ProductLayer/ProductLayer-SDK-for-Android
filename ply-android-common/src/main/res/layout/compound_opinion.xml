@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2015, ProductLayer GmbH All rights reserved.
+  ~
+  ~ Redistribution and use in source and binary forms, with or without
+  ~ modification, are permitted provided that the following conditions are met:
+  ~
+  ~ - Redistributions of source code must retain the above copyright notice, this
+  ~   list of conditions and the following disclaimer.
+  ~
+  ~ - Redistributions in binary form must reproduce the above copyright notice,
+  ~   this list of conditions and the following disclaimer in the documentation
+  ~   and/or other materials provided with the distribution.
+  ~
+  ~ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  ~ AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  ~ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+  ~ DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+  ~ FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+  ~ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+  ~ SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+  ~ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+  ~ OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  ~ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  -->
+
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+       xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.productlayer.android.common.view.AuthorView
+            android:id="@+id/author"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <RelativeLayout
+            android:id="@+id/speech_bubble"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/author"
+            android:background="?attr/speechBubbleBackground">
+
+            <TextView
+                android:id="@+id/opinion"
+                style="?attr/textAppearanceBody2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="4dp"
+                android:paddingLeft="4dp"
+                android:paddingRight="4dp"
+                android:textColor="?attr/textColorOnAccentBg"/>
+
+            <com.productlayer.android.common.view.LikeView
+                android:id="@+id/like_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/opinion"
+                android:layout_below="@id/opinion"
+                app:iconColor="@color/grey_300"
+                app:iconColorActive="?attr/textColorOnAccentBg"
+                app:iconSize="mini"
+                app:likeType="opine"/>
+
+            <ImageView
+                android:id="@+id/write_opinion_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:paddingLeft="24dp"
+                android:paddingRight="4dp"
+                android:paddingTop="24dp"
+                android:paddingBottom="2dp"
+                android:alpha="0.8"
+                android:contentDescription="@string/write_opinion_image"
+                android:src="@drawable/opinion_24dp"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</merge>

@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2015, ProductLayer GmbH All rights reserved.
+  ~
+  ~ Redistribution and use in source and binary forms, with or without
+  ~ modification, are permitted provided that the following conditions are met:
+  ~
+  ~ - Redistributions of source code must retain the above copyright notice, this
+  ~   list of conditions and the following disclaimer.
+  ~
+  ~ - Redistributions in binary form must reproduce the above copyright notice,
+  ~   this list of conditions and the following disclaimer in the documentation
+  ~   and/or other materials provided with the distribution.
+  ~
+  ~ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  ~ AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  ~ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+  ~ DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+  ~ FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+  ~ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+  ~ SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+  ~ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+  ~ OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  ~ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- PRODUCTLAYER THEME -->
+    <style name="Theme.ProductLayer" parent="Theme.AppCompat.Light.NoActionBar">
+
+        <item name="colorPrimary">@color/ply_primary</item>
+        <item name="colorPrimaryDark">@color/ply_primary_dark</item>
+        <item name="colorAccent">@color/ply_accent</item>
+
+        <item name="android:windowBackground">@color/ply_window_bg</item>
+        <item name="cardBackground">@color/ply_card_bg</item>
+        <item name="friendBackground">@color/ply_card_bg</item>
+
+        <item name="android:textColorPrimary">@color/ply_text_primary</item>
+        <item name="android:textColorSecondary">@color/ply_text_secondary</item>
+        <item name="android:textColorTertiary">@color/ply_text_secondary</item>
+
+        <item name="textColorAccent">@color/ply_text_accent</item>
+        <item name="textColorOnAccentBg">@color/ply_text_on_accent_bg</item>
+
+        <item name="imagePlaceholder">@color/ply_image_placeholder</item>
+
+        <item name="android:textViewStyle">@style/Widget.ProductLayer.TextView</item>
+        <item name="textAppearanceCaption">@style/TextAppearance.ProductLayer.Caption</item>
+        <item name="textAppearanceBody1">@style/TextAppearance.ProductLayer.Body1</item>
+        <item name="textAppearanceBody2">@style/TextAppearance.ProductLayer.Body2</item>
+        <item name="textAppearanceSubhead">@style/TextAppearance.ProductLayer.Subhead</item>
+        <item name="textAppearanceTitle">@style/TextAppearance.ProductLayer.Title</item>
+        <item name="textAppearanceHeadline">@style/TextAppearance.ProductLayer.Headline</item>
+        <item name="textAppearanceDisplay1">@style/TextAppearance.ProductLayer.Display1</item>
+        <item name="textAppearanceDisplay2">@style/TextAppearance.ProductLayer.Display2</item>
+        <item name="textAppearanceDisplay3">@style/TextAppearance.ProductLayer.Display3</item>
+        <item name="textAppearanceDisplay4">@style/TextAppearance.ProductLayer.Display4</item>
+        <item name="textAppearanceLevelOverlay">@style/TextAppearance.ProductLayer.LevelOverlay</item>
+        <item name="textAppearanceLikesOverlay">@style/TextAppearance.ProductLayer.LikesOverlay</item>
+        <item name="textAppearanceDislikesOverlay">@style/TextAppearance.ProductLayer.DislikesOverlay</item>
+
+        <item name="buttonStyleHighlighted">@style/Widget.ProductLayer.Button.Highlighted</item>
+        <item name="borderlessButtonStyleHighlighted">
+            @style/Widget.ProductLayer.Button.Borderless.Highlighted
+        </item>
+
+        <item name="dialogHeader">@style/Widget.ProductLayer.Dialog.Header</item>
+        <item name="dialogBody">@style/Widget.ProductLayer.Dialog</item>
+        <item name="dialogBodyWide">@style/Widget.ProductLayer.Dialog.Wide</item>
+
+        <item name="speechBubbleShape">@drawable/triangle</item>
+        <item name="speechBubbleBackground">@drawable/round_rectangle</item>
+
+    </style>
+
+    <!-- FONTS -->
+    <style name="TextAppearance.ProductLayer" parent="TextAppearance.AppCompat"/>
+
+    <style name="TextAppearance.ProductLayer.Caption" parent="TextAppearance.AppCompat.Caption">
+        <item name="android:fontFamily" tools:targetApi="jelly_bean">sans-serif-light</item>
+        <item name="android:textColor">?android:attr/textColorTertiary</item>
+    </style>
+
+    <style name="TextAppearance.ProductLayer.Body1" parent="TextAppearance.AppCompat.Body1">
+        <item name="android:fontFamily" tools:targetApi="jelly_bean">sans-serif-light</item>
+        <item name="android:textColor">?android:attr/textColorSecondary</item>
+    </style>
+
+    <style name="TextAppearance.ProductLayer.Body2" parent="TextAppearance.AppCompat.Body2">
+        <item name="android:fontFamily" tools:targetApi="jelly_bean">sans-serif</item>
+        <item name="android:textColor">?attr/colorAccent</item>
+    </style>
+
+    <style name="TextAppearance.ProductLayer.Subhead" parent="TextAppearance.AppCompat.Subhead">
+        <item name="android:fontFamily" tools:targetApi="jelly_bean">sans-serif-light</item>
+        <item name="android:textColor">?android:attr/textColorSecondary</item>
+    </style>
+
+    <style name="TextAppearance.ProductLayer.Title" parent="TextAppearance.AppCompat.Title">
+        <item name="android:fontFamily" tools:targetApi="jelly_bean">sans-serif</item>
+        <item name="android:textColor">?android:attr/textColorSecondary</item>
+    </style>
+
+    <style name="TextAppearance.ProductLayer.Headline" parent="TextAppearance.AppCompat.Headline">
+        <item name="android:fontFamily" tools:targetApi="jelly_bean">sans-serif-light</item>
+        <item name="android:textColor">?android:attr/textColorSecondary</item>
+    </style>
+
+    <style name="TextAppearance.ProductLayer.Display1" parent="TextAppearance.AppCompat.Display1">
+        <item name="android:fontFamily" tools:targetApi="jelly_bean">sans-serif-light</item>
+        <item name="android:textColor">?android:attr/textColorSecondary</item>
+    </style>
+
+    <style name="TextAppearance.ProductLayer.Display2" parent="TextAppearance.AppCompat.Display2">
+        <item name="android:fontFamily" tools:targetApi="jelly_bean">sans-serif-light</item>
+        <item name="android:textColor">?android:attr/textColorSecondary</item>
+    </style>
+
+    <style name="TextAppearance.ProductLayer.Display3" parent="TextAppearance.AppCompat.Display3">
+        <item name="android:fontFamily" tools:targetApi="jelly_bean">sans-serif-light</item>
+        <item name="android:textColor">?android:attr/textColorSecondary</item>
+    </style>
+
+    <style name="TextAppearance.ProductLayer.Display4" parent="TextAppearance.AppCompat.Display4">
+        <item name="android:fontFamily" tools:targetApi="jelly_bean">sans-serif-thin</item>
+        <item name="android:textColor">?android:attr/textColorSecondary</item>
+    </style>
+
+    <style name="TextAppearance.ProductLayer.WhiteTextOverlay" parent="TextAppearance.AppCompat.Caption">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:shadowRadius">1</item>
+        <item name="android:shadowColor">@color/black</item>
+    </style>
+
+    <style name="TextAppearance.ProductLayer.LevelOverlay" parent="TextAppearance.ProductLayer.WhiteTextOverlay">
+    </style>
+
+    <style name="TextAppearance.ProductLayer.LikesOverlay" parent="TextAppearance.ProductLayer.WhiteTextOverlay">
+        <item name="android:shadowRadius">3</item>
+        <item name="android:shadowDx">-2</item>
+        <item name="android:shadowDy">2</item>
+        <item name="android:shadowColor">@color/green_500</item>
+    </style>
+
+    <style name="TextAppearance.ProductLayer.DislikesOverlay"
+           parent="TextAppearance.ProductLayer.LikesOverlay">
+        <item name="android:shadowColor">@color/red_500</item>
+    </style>
+
+    <!-- WIDGETS -->
+    <style name="Widget.ProductLayer" parent="android:Widget"/>
+
+    <!-- TEXTVIEWS -->
+    <style name="Widget.ProductLayer.TextView" parent="android:Widget.TextView">
+        <item name="android:fontFamily" tools:targetApi="jelly_bean">sans-serif-light</item>
+        <item name="android:textColor">?android:attr/textColorSecondary</item>
+    </style>
+
+    <!-- BUTTONS -->
+    <style name="Widget.ProductLayer.Button" parent="Widget.AppCompat.Button"/>
+
+    <style name="Widget.ProductLayer.Button.Borderless" parent="Widget.AppCompat.Button.Borderless"/>
+
+    <style name="Widget.ProductLayer.Button.Highlighted">
+        <item name="colorButtonNormal">?attr/colorAccent</item>
+        <!-- android:background should not be required and removes the ripple effect -->
+        <item name="android:background">?attr/colorAccent</item>
+        <item name="android:textColor">?attr/textColorOnAccentBg</item>
+    </style>
+
+    <style name="Widget.ProductLayer.Button.Borderless.Highlighted">
+        <item name="colorButtonNormal">?attr/colorAccent</item>
+        <!-- android:background should not be required and removes the ripple effect -->
+        <item name="android:background">?attr/colorAccent</item>
+        <item name="android:textColor">?attr/textColorOnAccentBg</item>
+    </style>
+
+    <!-- DIALOGS -->
+    <style name="Widget.ProductLayer.Dialog">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">4dp</item>
+        <item name="android:layout_marginLeft">24dp</item>
+        <item name="android:layout_marginRight">24dp</item>
+        <item name="android:layout_marginTop">8dp</item>
+    </style>
+
+    <style name="Widget.ProductLayer.Dialog.Header">
+        <item name="android:textAppearance">?attr/textAppearanceTitle</item>
+        <item name="android:background">?attr/colorAccent</item>
+        <item name="android:textColor">?attr/textColorOnAccentBg</item>
+        <item name="android:paddingBottom">20dp</item>
+        <item name="android:paddingLeft">24dp</item>
+        <item name="android:paddingRight">24dp</item>
+        <item name="android:paddingTop">24dp</item>
+        <item name="android:layout_marginBottom">0dp</item>
+        <item name="android:layout_marginLeft">0dp</item>
+        <item name="android:layout_marginRight">0dp</item>
+        <item name="android:layout_marginTop">0dp</item>
+    </style>
+
+    <style name="Widget.ProductLayer.Dialog.Wide">
+        <item name="android:layout_marginLeft">16dp</item>
+        <item name="android:layout_marginRight">16dp</item>
+    </style>
+
+    <!-- FULLSCREEN THEME -->
+    <style name="Theme.ProductLayer.FullScreen">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowTranslucentNavigation" tools:targetApi="kitkat">true</item>
+    </style>
+
+</resources>
