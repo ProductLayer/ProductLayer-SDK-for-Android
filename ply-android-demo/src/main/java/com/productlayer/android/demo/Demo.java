@@ -31,8 +31,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.productlayer.android.common.global.ObjectCache;
 import com.productlayer.android.common.handler.AppBarHandler;
+import com.productlayer.android.common.handler.FloatingActionButtonHandler;
 import com.productlayer.android.common.handler.HasAppBarHandler;
+import com.productlayer.android.common.handler.HasFloatingActionButtonHandler;
 import com.productlayer.android.common.handler.HasNavigationHandler;
 import com.productlayer.android.common.handler.HasPLYAndroidHolder;
 import com.productlayer.android.common.handler.HasTimelineSettingsHandler;
@@ -45,6 +48,7 @@ import com.productlayer.android.common.util.CacheUtil;
 import com.productlayer.android.common.util.LocaleUtil;
 import com.productlayer.android.common.util.MetricsUtil;
 import com.productlayer.android.demo.handler.DemoAppBarHandler;
+import com.productlayer.android.demo.handler.DemoFloatingActionButtonHandler;
 import com.productlayer.android.demo.handler.DemoNavigationHandler;
 import com.productlayer.android.demo.handler.DemoTimelineSettingsHandler;
 import com.productlayer.android.demo.handler.DemoUserHandler;
@@ -53,9 +57,16 @@ import com.productlayer.rest.client.config.PLYRestClientConfig;
 
 /**
  * Demonstrates usage of the ProductLayer SDK and its common components.
+ *
+ * The app presents a feed of the latest products and opinions added to ProductLayer using the {@link com
+ * .productlayer.android.common.fragment.GlobalTimelineFragment} component. Product details are implemented
+ * using {@link com.productlayer.android.common.fragment.ProductFragment}. Editing and interaction
+ * functionality may easily be added by getting an <a href='https://developer.productlayer.com'>API key</a>
+ * and by completing the implementation of the listed handlers.
  */
 public class Demo extends AppCompatActivity implements HasPLYAndroidHolder, PLYAndroidHolder,
-        HasAppBarHandler, HasNavigationHandler, HasTimelineSettingsHandler, HasUserHandler {
+        HasAppBarHandler, HasNavigationHandler, HasTimelineSettingsHandler, HasUserHandler,
+        HasFloatingActionButtonHandler {
 
     private PLYAndroid client;
 
@@ -63,6 +74,7 @@ public class Demo extends AppCompatActivity implements HasPLYAndroidHolder, PLYA
     private DemoNavigationHandler navigationHandler;
     private DemoTimelineSettingsHandler timelineSettingsHandler;
     private DemoUserHandler userHandler;
+    private DemoFloatingActionButtonHandler floatingActionButtonHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,9 +91,10 @@ public class Demo extends AppCompatActivity implements HasPLYAndroidHolder, PLYA
                 CacheUtil.PICASSO_CACHE_DISK_MB, false);
         // set up handlers
         appBarHandler = new DemoAppBarHandler();
-        navigationHandler = new DemoNavigationHandler();
+        navigationHandler = new DemoNavigationHandler(getSupportFragmentManager(), R.id.content);
         timelineSettingsHandler = new DemoTimelineSettingsHandler();
         userHandler = new DemoUserHandler();
+        floatingActionButtonHandler = new DemoFloatingActionButtonHandler();
         // any previously attached fragments may be recreated
         super.onCreate(savedInstanceState);
         // attach app layout
@@ -89,6 +102,12 @@ public class Demo extends AppCompatActivity implements HasPLYAndroidHolder, PLYA
         // set up app bar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        // if no fragment is restored, display a global timeline of products and opinions
+        if (savedInstanceState == null) {
+            navigationHandler.openTimeline();
+        }
+        // get product categories to translate keys to titles on the product page
+        cacheCategories();
     }
 
     @Override
@@ -141,5 +160,22 @@ public class Demo extends AppCompatActivity implements HasPLYAndroidHolder, PLYA
     @Override
     public UserHandler getUserHandler() {
         return userHandler;
+    }
+
+    @Override
+    public FloatingActionButtonHandler getFloatingActionButtonHandler() {
+        return floatingActionButtonHandler;
+    }
+
+    /**
+     * Caches categories retrieved via the ProductLayer API in the background.
+     */
+    private void cacheCategories() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                ObjectCache.getCategories(Demo.this, client, false, false);
+            }
+        }).start();
     }
 }

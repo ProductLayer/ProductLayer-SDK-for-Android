@@ -25,6 +25,12 @@
 
 package com.productlayer.android.demo.handler;
 
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+
+import com.productlayer.android.common.fragment.GlobalTimelineFragment;
+import com.productlayer.android.common.fragment.ProductFragment;
 import com.productlayer.android.common.handler.NavigationHandler;
 import com.productlayer.android.sdk.PLYAndroid;
 import com.productlayer.android.sdk.PLYCompletion;
@@ -36,6 +42,23 @@ import com.productlayer.core.beans.User;
  * Handles navigation between the fragments of the demo app.
  */
 public class DemoNavigationHandler implements NavigationHandler {
+
+    private final FragmentManager fragmentManager;
+    private final int contentViewId;
+
+    /**
+     * Creates a new handler replacing fragments in {@code contentViewId} to navigate through the app.
+     *
+     * @param fragmentManager
+     *         the activity's fragment manager
+     * @param contentViewId
+     *         the view to hold new fragments
+     */
+    public DemoNavigationHandler(FragmentManager fragmentManager, int contentViewId) {
+        this.fragmentManager = fragmentManager;
+        this.contentViewId = contentViewId;
+    }
+
     @Override
     public void showSignInDialog(PLYAndroid.Query queryOnSuccess, PLYCompletion queryOnSuccessCompletion,
             PLYAndroid.QueryError queryError) {
@@ -53,6 +76,8 @@ public class DemoNavigationHandler implements NavigationHandler {
 
     @Override
     public void openTimeline() {
+        // create new timeline fragment and attach it
+        replaceContent(new GlobalTimelineFragment(), false);
     }
 
     @Override
@@ -69,6 +94,9 @@ public class DemoNavigationHandler implements NavigationHandler {
 
     @Override
     public void openProductPage(Product product) {
+        // create new product fragment and attach it
+        Fragment productFragment = ProductFragment.newInstance(product);
+        replaceContent(productFragment, true);
     }
 
     @Override
@@ -85,5 +113,22 @@ public class DemoNavigationHandler implements NavigationHandler {
 
     @Override
     public void search(String query) {
+    }
+
+    /**
+     * Replaces the fragment in the content view.
+     *
+     * @param fragment
+     *         the fragment replacing the one currently displayed
+     * @param addToBackStack
+     *         true if the previous state may be restored, false else
+     */
+    private void replaceContent(Fragment fragment, boolean addToBackStack) {
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(contentViewId, fragment);
+        if (addToBackStack) {
+            fragmentTransaction.addToBackStack(null);
+        }
+        fragmentTransaction.commit();
     }
 }
