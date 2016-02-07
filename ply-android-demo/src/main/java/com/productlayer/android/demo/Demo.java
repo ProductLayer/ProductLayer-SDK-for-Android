@@ -25,12 +25,15 @@
 
 package com.productlayer.android.demo;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.productlayer.android.common.activity.ScannerActivity;
 import com.productlayer.android.common.global.ObjectCache;
 import com.productlayer.android.common.handler.AppBarHandler;
 import com.productlayer.android.common.handler.FloatingActionButtonHandler;
@@ -45,8 +48,10 @@ import com.productlayer.android.common.handler.PLYAndroidHolder;
 import com.productlayer.android.common.handler.TimelineSettingsHandler;
 import com.productlayer.android.common.handler.UserHandler;
 import com.productlayer.android.common.util.CacheUtil;
+import com.productlayer.android.common.util.CameraUtil;
 import com.productlayer.android.common.util.LocaleUtil;
 import com.productlayer.android.common.util.MetricsUtil;
+import com.productlayer.android.common.util.SnackbarUtil;
 import com.productlayer.android.demo.handler.DemoAppBarHandler;
 import com.productlayer.android.demo.handler.DemoFloatingActionButtonHandler;
 import com.productlayer.android.demo.handler.DemoNavigationHandler;
@@ -60,13 +65,16 @@ import com.productlayer.rest.client.config.PLYRestClientConfig;
  *
  * The app presents a feed of the latest products and opinions added to ProductLayer using the {@link com
  * .productlayer.android.common.fragment.GlobalTimelineFragment} component. Product details are implemented
- * using {@link com.productlayer.android.common.fragment.ProductFragment}. Editing and interaction
- * functionality may easily be added by getting an <a href='https://developer.productlayer.com'>API key</a>
- * and by completing the implementation of the listed handlers.
+ * using {@link com.productlayer.android.common.fragment.ProductFragment}. Barcode lookup is provided by
+ * {@link ScannerActivity}. Editing and interaction functionality may easily be added by getting a
+ * ProductLayer <a href='https://developer.productlayer.com'>API key</a> and by completing the implementation
+ * of the listed handlers.
  */
 public class Demo extends AppCompatActivity implements HasPLYAndroidHolder, PLYAndroidHolder,
         HasAppBarHandler, HasNavigationHandler, HasTimelineSettingsHandler, HasUserHandler,
         HasFloatingActionButtonHandler {
+
+    private static final int REQUEST_CODE_SCAN = 1;
 
     private PLYAndroid client;
 
@@ -91,7 +99,7 @@ public class Demo extends AppCompatActivity implements HasPLYAndroidHolder, PLYA
                 CacheUtil.PICASSO_CACHE_DISK_MB, false);
         // set up handlers
         appBarHandler = new DemoAppBarHandler();
-        navigationHandler = new DemoNavigationHandler(getSupportFragmentManager(), R.id.content);
+        navigationHandler = new DemoNavigationHandler(getSupportFragmentManager(), R.id.content, client);
         timelineSettingsHandler = new DemoTimelineSettingsHandler();
         userHandler = new DemoUserHandler();
         floatingActionButtonHandler = new DemoFloatingActionButtonHandler();
@@ -112,24 +120,40 @@ public class Demo extends AppCompatActivity implements HasPLYAndroidHolder, PLYA
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
+        // populate the action bar
         getMenuInflater().inflate(R.menu.menu_demo, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_scan) {
-            return true;
+        switch (item.getItemId()) {
+            case R.id.action_scan:
+                if (CameraUtil.hasCameraAny(this)) {
+                    // start the barcode scanner
+                    Intent intent = new Intent(this, ScannerActivity.class);
+                    startActivityForResult(intent, REQUEST_CODE_SCAN);
+                } else {
+                    SnackbarUtil.make(this, findViewById(R.id.content), R.string.no_camera_found, Snackbar
+                            .LENGTH_LONG).show();
+                }
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
+    }
 
-        return super.onOptionsItemSelected(item);
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        MetricsUtil.update(this);
+        if (requestCode == REQUEST_CODE_SCAN) {
+            if (resultCode == AppCompatActivity.RESULT_CANCELED) {
+                return;
+            }
+            // get any GTIN extracted by the scanner and look it up on ProductLayer
+            String gtin = data.getStringExtra(ScannerActivity.RESULT_GTIN);
+            navigationHandler.lookUpProduct(gtin);
+        }
     }
 
     @Override

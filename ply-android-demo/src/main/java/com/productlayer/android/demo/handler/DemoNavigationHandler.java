@@ -28,23 +28,29 @@ package com.productlayer.android.demo.handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 
 import com.productlayer.android.common.fragment.GlobalTimelineFragment;
 import com.productlayer.android.common.fragment.ProductFragment;
 import com.productlayer.android.common.handler.NavigationHandler;
 import com.productlayer.android.sdk.PLYAndroid;
 import com.productlayer.android.sdk.PLYCompletion;
+import com.productlayer.android.sdk.services.ProductService;
 import com.productlayer.core.beans.Opine;
 import com.productlayer.core.beans.Product;
 import com.productlayer.core.beans.User;
+import com.productlayer.core.error.PLYStatusCodes;
 
 /**
  * Handles navigation between the fragments of the demo app.
  */
 public class DemoNavigationHandler implements NavigationHandler {
 
+    private static final String TAG = DemoNavigationHandler.class.getSimpleName();
+
     private final FragmentManager fragmentManager;
     private final int contentViewId;
+    private final PLYAndroid client;
 
     /**
      * Creates a new handler replacing fragments in {@code contentViewId} to navigate through the app.
@@ -53,10 +59,13 @@ public class DemoNavigationHandler implements NavigationHandler {
      *         the activity's fragment manager
      * @param contentViewId
      *         the view to hold new fragments
+     * @param client
+     *         the PLYAndroid REST client to connect to ProductLayer
      */
-    public DemoNavigationHandler(FragmentManager fragmentManager, int contentViewId) {
+    public DemoNavigationHandler(FragmentManager fragmentManager, int contentViewId, PLYAndroid client) {
         this.fragmentManager = fragmentManager;
         this.contentViewId = contentViewId;
+        this.client = client;
     }
 
     @Override
@@ -81,7 +90,24 @@ public class DemoNavigationHandler implements NavigationHandler {
     }
 
     @Override
-    public void lookUpProduct(String gtin) {
+    public void lookUpProduct(final String gtin) {
+        ProductService.getProductForGtin(client, gtin, null, false, null, new PLYCompletion<Product>() {
+            @Override
+            public void onSuccess(Product result) {
+                openProductPage(result);
+            }
+
+            @Override
+            public void onError(final PLYAndroid.QueryError error) {
+                if (error.isHttpStatusError()) {
+                    if (error.getHttpStatusCode() == PLYStatusCodes.HTTP_STATUS_NOT_FOUND_CODE) {
+                        Log.i(TAG, "The product with GTIN " + gtin + " is not yet known to ProductLayer.");
+                    }
+                } else {
+                    Log.w(TAG, "Connection failed - please make sure you are connected!");
+                }
+            }
+        });
     }
 
     @Override
