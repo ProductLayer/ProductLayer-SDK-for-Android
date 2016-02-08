@@ -55,6 +55,7 @@ import com.productlayer.android.common.util.SnackbarUtil;
 import com.productlayer.android.demo.handler.DemoAppBarHandler;
 import com.productlayer.android.demo.handler.DemoFloatingActionButtonHandler;
 import com.productlayer.android.demo.handler.DemoNavigationHandler;
+import com.productlayer.android.demo.handler.DemoQueryListener;
 import com.productlayer.android.demo.handler.DemoTimelineSettingsHandler;
 import com.productlayer.android.demo.handler.DemoUserHandler;
 import com.productlayer.android.sdk.PLYAndroid;
@@ -63,12 +64,13 @@ import com.productlayer.rest.client.config.PLYRestClientConfig;
 /**
  * Demonstrates usage of the ProductLayer SDK and its common components.
  *
- * The app presents a feed of the latest products and opinions added to ProductLayer using the {@link com
- * .productlayer.android.common.fragment.GlobalTimelineFragment} component. Product details are implemented
+ * The app presents a feed of the latest products and opinions added to ProductLayer using the {@link
+ * com.productlayer.android.common.fragment.GlobalTimelineFragment} component. Product details are implemented
  * using {@link com.productlayer.android.common.fragment.ProductFragment}. Barcode lookup is provided by
- * {@link ScannerActivity}. Editing and interaction functionality may easily be added by getting a
- * ProductLayer <a href='https://developer.productlayer.com'>API key</a> and by completing the implementation
- * of the listed handlers.
+ * {@link ScannerActivity}. Editing and interaction functionality can be achieved simply by calling {@link
+ * com.productlayer.android.sdk.services.UserService#login} before any request requiring authentication. To
+ * maintain a user session through app restarts {@link PLYAndroid} contains methods in line with the lifecycle
+ * of activities.
  */
 public class Demo extends AppCompatActivity implements HasPLYAndroidHolder, PLYAndroidHolder,
         HasAppBarHandler, HasNavigationHandler, HasTimelineSettingsHandler, HasUserHandler,
@@ -88,10 +90,12 @@ public class Demo extends AppCompatActivity implements HasPLYAndroidHolder, PLYA
     protected void onCreate(Bundle savedInstanceState) {
         // use default REST client config and set API key
         PLYRestClientConfig config = new PLYRestClientConfig();
+        // get your own API key from https://developer.productlayer.com and set it here
         config.apiKey = getString(R.string.api_demo_key);
         // create PLYAndroid client
         client = new PLYAndroid(config);
         client.setLanguage(LocaleUtil.getDefaultLanguage());
+        client.setQueryListener(new DemoQueryListener());
         // get screen data
         MetricsUtil.update(this);
         // set up image caching
@@ -153,6 +157,9 @@ public class Demo extends AppCompatActivity implements HasPLYAndroidHolder, PLYA
             // get any GTIN extracted by the scanner and look it up on ProductLayer
             String gtin = data.getStringExtra(ScannerActivity.RESULT_GTIN);
             navigationHandler.lookUpProduct(gtin);
+        } else {
+            // dispatch to fragments
+            super.onActivityResult(requestCode, resultCode, data);
         }
     }
 
