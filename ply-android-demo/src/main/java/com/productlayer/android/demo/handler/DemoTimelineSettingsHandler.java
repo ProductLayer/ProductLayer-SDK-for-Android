@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015, ProductLayer GmbH All rights reserved.
+ * Copyright (c) 2016, ProductLayer GmbH All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -23,4 +23,30 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-include 'ply-android-sdk', 'ply-android-common', ':ply-android-demo'
+package com.productlayer.android.demo.handler;
+
+import com.productlayer.android.common.fragment.TimelineFragment;
+import com.productlayer.android.common.handler.TimelineSettingsHandler;
+
+/**
+ * Dummy timeline settings handler.
+ */
+public class DemoTimelineSettingsHandler implements TimelineSettingsHandler {
+    @Override
+    public void configureTimelineSettings(String tag, TimelineSetting[] availableSettings, int
+            defaultSettings, TimelineFragment timeline) {
+    }
+
+    @Override
+    public void showTimelineSettings() {
+    }
+
+    @Override
+    public void hideTimelineSettings() {
+    }
+
+    @Override
+    public int getTimelineSettings(String tag, int defaultSettings) {
+        return defaultSettings;
+    }
+}
