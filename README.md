@@ -6,7 +6,6 @@ The ultimate product information API, enabling a new breed of [product-centric a
 See ProductLayer in action in our [prod.ly app](https://play.google.com/store/apps/details?id=com.productlayer.prodly).
 
 ## Usage
-
 #### Grade
 ```
 compile 'com.productlayer.ply-android-sdk:0.5.0'
@@ -57,3 +56,12 @@ ProductService.searchProductsByBrand(client, "Apple", null, null,
 This will run asynchronously, querying our API for all products by brand *Apple*.
 
 To view the full functionality of our API please visit [developer.productlayer.com](https://developer.productlayer.com).
+
+## Demo
+The [demo app](https://github.com/ProductLayer/ProductLayer-SDK-for-Android/blob/master/ply-android-demo/src/main/java/com/productlayer/android/demo/Demo.java) showcases some of the components found in the common library:
+
+*	ScannerActivity, a barcode scanner and lookup of a product on ProductLayer
+*	GlobalTimelineFragment, a feed of the latest products and opinions
+*	ProductFragment, everthing about a specific product: facts, opinions, images
+
+The common library includes even more components to facilitate usage of the SDK: [adapters](https://github.com/ProductLayer/ProductLayer-SDK-for-Android/tree/master/ply-android-common/src/main/java/com/productlayer/android/common/adapter), [dialogs](https://github.com/ProductLayer/ProductLayer-SDK-for-Android/tree/master/ply-android-common/src/main/java/com/productlayer/android/common/dialog), [views](https://github.com/ProductLayer/ProductLayer-SDK-for-Android/tree/master/ply-android-common/src/main/java/com/productlayer/android/common/view) as well as full-blown UI [fragments](https://github.com/ProductLayer/ProductLayer-SDK-for-Android/tree/master/ply-android-common/src/main/java/com/productlayer/android/common/fragment).
