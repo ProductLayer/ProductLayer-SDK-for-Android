@@ -102,7 +102,7 @@ public class Demo extends AppCompatActivity implements HasPLYAndroidHolder, PLYA
         CacheUtil.setupPicassoInstance(getApplicationContext(), CacheUtil.PICASSO_CACHE_MEMORY_PERCENTAGE,
                 CacheUtil.PICASSO_CACHE_DISK_MB, false);
         // set up handlers
-        appBarHandler = new DemoAppBarHandler();
+        appBarHandler = new DemoAppBarHandler(this);
         navigationHandler = new DemoNavigationHandler(getSupportFragmentManager(), R.id.content, client);
         timelineSettingsHandler = new DemoTimelineSettingsHandler();
         userHandler = new DemoUserHandler();
@@ -141,6 +141,9 @@ public class Demo extends AppCompatActivity implements HasPLYAndroidHolder, PLYA
                     SnackbarUtil.make(this, findViewById(R.id.content), R.string.no_camera_found, Snackbar
                             .LENGTH_LONG).show();
                 }
+                return true;
+            case android.R.id.home:
+                getSupportFragmentManager().popBackStack();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

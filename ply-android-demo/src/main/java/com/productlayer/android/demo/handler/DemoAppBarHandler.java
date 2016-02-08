@@ -25,21 +25,47 @@
 
 package com.productlayer.android.demo.handler;
 
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.productlayer.android.common.handler.AppBarHandler;
+import com.productlayer.android.demo.R;
 
 /**
  * Dummy app bar handler.
  */
 public class DemoAppBarHandler implements AppBarHandler {
+
+    private final AppCompatActivity activity;
+
+    /**
+     * Constructs a new handler to manage changes to the app bar on loading fragments.
+     *
+     * @param activity
+     *         the activity hosting the app's action bar
+     */
+    public DemoAppBarHandler(AppCompatActivity activity) {
+        this.activity = activity;
+    }
+
     @Override
     public void setTimelineAppBar(View view) {
+        ActionBar actionBar = activity.getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setTitle(R.string.app_name);
+            actionBar.setDisplayHomeAsUpEnabled(false);
+        }
     }
 
     @Override
     public void setProductAppBar(View view, String title, View customView, int addCollapsedHeight, int
             expandedHeight, View backdrop) {
+        ActionBar actionBar = activity.getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setTitle(title);
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
     }
 
     @Override
