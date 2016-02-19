@@ -7,13 +7,13 @@ See ProductLayer in action in our [prod.ly app](https://play.google.com/store/ap
 
 ## Usage
 #### Grade
-```
+```groovy
 compile 'com.productlayer.ply-android-sdk:0.5.0'
 compile 'com.productlayer.ply-android-common:0.5.0'
 ```
 
 #### Maven
-```
+```xml
 <dependency>
     <groupId>com.productlayer</groupId>
     <artifactId>ply-android-sdk</artifactId>
