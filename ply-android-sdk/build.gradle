@@ -56,6 +56,10 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_7
         targetCompatibility JavaVersion.VERSION_1_7
     }
+
+    lintOptions {
+        lintConfig project.rootProject.file("lint.xml")
+    }
 }
 
 apply from: '../srcDoc.gradle'
@@ -123,6 +127,6 @@ dependencies {
         exclude group: 'org.apache.httpcomponents', module: 'httpclient'
     }
     compile 'org.springframework.android:spring-android-rest-template:2.0.0.M3'
-    compile 'com.squareup.okhttp:okhttp:2.5.0'
-    compile 'com.squareup.okio:okio:1.6.0'
+    compile 'com.squareup.okhttp:okhttp:2.7.1'
+    compile 'com.squareup.okio:okio:1.10.0'
 }
