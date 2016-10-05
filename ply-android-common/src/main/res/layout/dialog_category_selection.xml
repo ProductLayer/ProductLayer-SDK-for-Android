@@ -37,6 +37,14 @@
         style="?attr/dialogBodyWide"
         android:orientation="vertical">
 
+        <SearchView
+            android:id="@+id/category_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:iconifiedByDefault="false"
+            android:inputType="textFilter"
+            android:queryHint="@android:string/search_go"/>
+
         <ExpandableListView
             android:id="@+id/category_list"
             android:layout_width="match_parent"

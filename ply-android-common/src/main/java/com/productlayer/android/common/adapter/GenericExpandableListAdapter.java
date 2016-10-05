@@ -30,22 +30,30 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.productlayer.android.common.R;
 import com.productlayer.android.common.model.ExpandableListItem;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /**
- * An expandable list adapter filling the view from an array of {@link ExpandableListItem}.
+ * A searchable, expandable list adapter filling the view from an array of {@link ExpandableListItem}.
  */
-public class GenericExpandableListAdapter<T extends ExpandableListItem> extends BaseExpandableListAdapter {
+public class GenericExpandableListAdapter<T extends ExpandableListItem> extends BaseExpandableListAdapter
+        implements Filterable {
 
     private LayoutInflater inflater;
 
-    private T[] items;
+    private T[] allItems;
     private int expandedGroupLayout;
     private int collapsedGroupLayout;
+    private String searchableProperty;
     private String[] groupFrom;
     private int[] groupTo;
     private int childLayout;
@@ -53,6 +61,8 @@ public class GenericExpandableListAdapter<T extends ExpandableListItem> extends 
     private String[] childFrom;
     private int[] childTo;
     private int indicatorId;
+
+    private List<T> filteredItems;
 
     /**
      * Creates a new adapter from the specified expandable list items, allowing configuration of
@@ -67,6 +77,8 @@ public class GenericExpandableListAdapter<T extends ExpandableListItem> extends 
      *         the group header layout when expanded
      * @param collapsedGroupLayout
      *         the group header layout when collapsed
+     * @param searchableProperty
+     *         the property of items to use for filtering/searching
      * @param groupFrom
      *         the group items' properties to show
      * @param groupTo
@@ -86,12 +98,13 @@ public class GenericExpandableListAdapter<T extends ExpandableListItem> extends 
      *         expanded
      */
     public GenericExpandableListAdapter(Context context, T[] items, int expandedGroupLayout, int
-            collapsedGroupLayout, String[] groupFrom, int[] groupTo, int childLayout, int lastChildLayout,
-            String[] childFrom, int[] childTo, int indicatorId) {
+            collapsedGroupLayout, String searchableProperty, String[] groupFrom, int[] groupTo, int
+            childLayout, int lastChildLayout, String[] childFrom, int[] childTo, int indicatorId) {
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        this.items = items;
+        this.allItems = items;
         this.expandedGroupLayout = expandedGroupLayout;
         this.collapsedGroupLayout = collapsedGroupLayout;
+        this.searchableProperty = searchableProperty;
         this.groupFrom = groupFrom;
         this.groupTo = groupTo;
         this.childLayout = childLayout;
@@ -99,6 +112,7 @@ public class GenericExpandableListAdapter<T extends ExpandableListItem> extends 
         this.childFrom = childFrom;
         this.childTo = childTo;
         this.indicatorId = indicatorId;
+        filteredItems = Arrays.asList(items);
     }
 
     @Override
@@ -107,7 +121,7 @@ public class GenericExpandableListAdapter<T extends ExpandableListItem> extends 
         if (view == null) {
             view = inflater.inflate(isExpanded ? expandedGroupLayout : collapsedGroupLayout, parent, false);
         }
-        bindView(view, items[groupPosition], groupFrom, groupTo);
+        bindView(view, filteredItems.get(groupPosition), groupFrom, groupTo);
         ImageView indicator = (ImageView) view.findViewById(indicatorId);
         if (getChildrenCount(groupPosition) == 0) {
             // hide indicator if no children
@@ -128,7 +142,7 @@ public class GenericExpandableListAdapter<T extends ExpandableListItem> extends 
         if (view == null) {
             view = inflater.inflate(isLastChild ? lastChildLayout : childLayout, parent, false);
         }
-        bindView(view, items[groupPosition].getSubItems()[childPosition], childFrom, childTo);
+        bindView(view, filteredItems.get(groupPosition).getSubItems()[childPosition], childFrom, childTo);
         return view;
     }
 
@@ -155,22 +169,22 @@ public class GenericExpandableListAdapter<T extends ExpandableListItem> extends 
 
     @Override
     public int getGroupCount() {
-        return items.length;
+        return filteredItems.size();
     }
 
     @Override
     public int getChildrenCount(int groupPosition) {
-        return items[groupPosition].getSubItems().length;
+        return filteredItems.get(groupPosition).getSubItems().length;
     }
 
     @Override
     public Object getGroup(int groupPosition) {
-        return items[groupPosition];
+        return filteredItems.get(groupPosition);
     }
 
     @Override
     public Object getChild(int groupPosition, int childPosition) {
-        return items[groupPosition].getSubItems()[childPosition];
+        return filteredItems.get(groupPosition).getSubItems()[childPosition];
     }
 
     @Override
@@ -191,5 +205,46 @@ public class GenericExpandableListAdapter<T extends ExpandableListItem> extends 
     @Override
     public boolean isChildSelectable(int groupPosition, int childPosition) {
         return true;
+    }
+
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence constraint) {
+                FilterResults filterResults = new FilterResults();
+                if (constraint == null || constraint.length() == 0 || searchableProperty == null) {
+                    filterResults.values = Arrays.asList(allItems);
+                    filterResults.count = allItems.length;
+                    return filterResults;
+                }
+                String constraintLower = constraint.toString().toLowerCase();
+                List<ExpandableListItem> newItems = new ArrayList<ExpandableListItem>();
+                for (ExpandableListItem item : allItems) {
+                    if (item.get(searchableProperty).toString().toLowerCase().contains(constraintLower)) {
+                        // if the category matches, display the category and any of its sub-categories
+                        newItems.add(item);
+                    } else {
+                        // if it does not match, search further to show any matching sub-categories
+                        for (ExpandableListItem subItem : item.getSubItems()) {
+                            if (subItem.get(searchableProperty).toString().toLowerCase().contains
+                                    (constraintLower) && subItem.getSubItems().length == 0) {
+                                newItems.add(subItem);
+                            }
+                        }
+                    }
+                }
+                filterResults.values = newItems;
+                filterResults.count = newItems.size();
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence constraint, FilterResults results) {
+                @SuppressWarnings("unchecked") List<T> newItems = (List<T>) results.values;
+                filteredItems = newItems;
+                notifyDataSetChanged();
+            }
+        };
     }
 }

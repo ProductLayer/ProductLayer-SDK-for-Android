@@ -60,9 +60,10 @@ public class CategoryListAdapter extends GenericExpandableListAdapter<CategoryLi
      */
     public CategoryListAdapter(Context context, CategoryListItem[] items, int expandedGroupLayout, int
             collapsedGroupLayout, int childLayout, int lastChildLayout, int indicatorId) {
-        super(context, items, expandedGroupLayout, collapsedGroupLayout, new String[]{CategoryListItem
-                .KEY_NAME}, new int[]{R.id.group_text}, childLayout, lastChildLayout, new
-                String[]{CategoryListItem.KEY_NAME}, new int[]{R.id.child_text}, indicatorId);
+        super(context, items, expandedGroupLayout, collapsedGroupLayout, CategoryListItem.KEY_NAME, new
+                String[]{CategoryListItem.KEY_NAME}, new int[]{R.id.group_text}, childLayout,
+                lastChildLayout, new String[]{CategoryListItem.KEY_NAME}, new int[]{R.id.child_text},
+                indicatorId);
     }
 
     /**

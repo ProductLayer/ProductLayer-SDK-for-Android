@@ -26,6 +26,7 @@
 package com.productlayer.android.common.dialog;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -33,8 +34,9 @@ import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ExpandableListAdapter;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ExpandableListView;
+import android.widget.SearchView;
 
 import com.productlayer.android.common.R;
 import com.productlayer.android.common.adapter.CategoryListAdapter;
@@ -74,9 +76,9 @@ public class CategorySelectionDialogFragment extends VerboseDialogFragment {
         View categorySelectionLayout = inflater.inflate(R.layout.dialog_category_selection, null);
         ExpandableListView categoryList = (ExpandableListView) categorySelectionLayout.findViewById(R.id
                 .category_list);
-        ExpandableListAdapter categoryAdapter = new CategoryListAdapter(getActivity(), categories, R.layout
-                .list_group_item_expanded, R.layout.list_group_item_collapsed, R.layout.list_child_item, R
-                .layout.list_child_item, R.id.indicator);
+        final CategoryListAdapter categoryAdapter = new CategoryListAdapter(getActivity(), categories, R
+                .layout.list_group_item_expanded, R.layout.list_group_item_collapsed, R.layout
+                .list_child_item, R.layout.list_child_item, R.id.indicator);
         categoryList.setAdapter(categoryAdapter);
         categoryList.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
@@ -95,6 +97,20 @@ public class CategorySelectionDialogFragment extends VerboseDialogFragment {
                 return category.getSubItems().length == 0 && categorySelected(category);
             }
         });
+        SearchView categorySearch = (SearchView) categorySelectionLayout.findViewById(R.id.category_search);
+        categorySearch.setSubmitButtonEnabled(false);
+        categorySearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                categoryAdapter.getFilter().filter(newText);
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return true;
+            }
+        });
         builder.setView(categorySelectionLayout);
         return builder.create();
     }
@@ -107,6 +123,9 @@ public class CategorySelectionDialogFragment extends VerboseDialogFragment {
      * @return false if no target fragment was set, true else
      */
     private boolean categorySelected(Parcelable category) {
+        InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Context
+                .INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(getDialog().getWindow().getDecorView().getWindowToken(), 0);
         // package the clicked category
         Intent data = new Intent();
         data.putExtra(KEY_SELECTION, category);
