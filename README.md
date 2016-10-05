@@ -6,23 +6,23 @@ The ultimate product information API, enabling a new breed of [product-centric a
 See ProductLayer in action in our [prod.ly app](https://play.google.com/store/apps/details?id=com.productlayer.prodly).
 
 ## Usage
-#### Grade
-```
-compile 'com.productlayer.ply-android-sdk:0.5.0'
-compile 'com.productlayer.ply-android-common:0.5.0'
+#### Gradle
+```groovy
+compile 'com.productlayer.ply-android-sdk:0.5.1'
+compile 'com.productlayer.ply-android-common:0.5.1'
 ```
 
 #### Maven
-```
+```xml
 <dependency>
     <groupId>com.productlayer</groupId>
     <artifactId>ply-android-sdk</artifactId>
-    <version>0.5.0</version>
+    <version>0.5.1</version>
 </dependency>
 <dependency>
     <groupId>com.productlayer</groupId>
     <artifactId>ply-android-common</artifactId>
-    <version>0.5.0</version>
+    <version>0.5.1</version>
 </dependency>
 ```
 
