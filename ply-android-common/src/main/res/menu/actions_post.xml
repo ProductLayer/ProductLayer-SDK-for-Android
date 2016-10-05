@@ -33,7 +33,7 @@
             android:id="@+id/action_post"
             android:icon="@drawable/ic_send_black_36dp"
             android:title="@string/action_post"
-            app:showAsAction="always|withText"/>
+            app:showAsAction="always"/>
 
     </group>
 
