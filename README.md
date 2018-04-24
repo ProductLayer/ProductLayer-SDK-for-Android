@@ -5,6 +5,9 @@ The ultimate product information API, enabling a new breed of [product-centric a
 
 See ProductLayer in action in our [prod.ly app](https://play.google.com/store/apps/details?id=com.productlayer.prodly).
 
+## We have SHUT DOWN
+https://www.cocoanetics.com/2018/04/productlayer-post-mortem/
+
 ## Usage
 #### Gradle
 ```groovy
